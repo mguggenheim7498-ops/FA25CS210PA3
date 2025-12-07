@@ -122,6 +122,19 @@ void printPath(pair<int,int> exitcell,
          vector<vector<int>>& parent_row,
          vector<vector<int>>& parent_col) {
     //Your code here
+    int N = maze.size();
+    int M = maze[0].size();
+
+    // checking the bounds
+    if (row < 0 || row >= N || col < 0 || col >= M) 
+        return false;
+
+    // stopping from goin into wals
+    if (maze[row][col] == 1) 
+        return false;
+        
+    //testa
+    return false; 
 }
 
 
