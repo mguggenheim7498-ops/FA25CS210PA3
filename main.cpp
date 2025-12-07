@@ -121,7 +121,8 @@ bool dfs(int row, int col,
          const vector<vector<int>>& maze,
          vector<vector<bool>>& visited,
          vector<vector<int>>& parent_row,
-         vector<vector<int>>& parent_col) 
+         vector<vector<int>>& parent_col,
+        int exit_row, int exit_col) 
 {
     int N = maze.size();
     int M = maze[0].size();
