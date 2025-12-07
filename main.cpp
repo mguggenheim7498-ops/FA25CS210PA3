@@ -140,6 +140,22 @@ bool dfs(int row, int col,
         return false;
     }
     visited[row][col] = true;
+    //iff exit
+    if (row == exit_row && col == exit_col) {
+        return true;
+    }
+
+    for (int i = 0; i < 4; i++) {
+
+        int nextRow = row + dr[i];
+        int nextCol = col + dc[i];
+
+        if (dfs(nextRow, nextCol, maze, visited, parent_row, 
+            parent_col, exit_row, exit_col)) {
+            return true;
+        }
+    }
+
 
     // temperar return
     return false; 
