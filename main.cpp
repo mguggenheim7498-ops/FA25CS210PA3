@@ -140,7 +140,7 @@ bool dfs(int row, int col,
         return false;
     }
     visited[row][col] = true;
-    //iff exit
+    // iff exit
     if (row == exit_row && col == exit_col) {
         return true;
     }
@@ -149,11 +149,11 @@ bool dfs(int row, int col,
         int nextRow = row + dr[i];
         int nextCol = col + dc[i];
 
-        // Check bounds for the neighbor
+        // checking bounds of neighbors
         if (nextRow < 0 || nextRow >= N || nextCol < 0 || nextCol >= M) continue;
         if (maze[nextRow][nextCol] == 1 || visited[nextRow][nextCol]) continue;
 
-        // Set parent BEFORE recursive call
+        // setting parents before the recursive
         parent_row[nextRow][nextCol] = row;
         parent_col[nextRow][nextCol] = col;
 
