@@ -146,14 +146,19 @@ bool dfs(int row, int col,
     }
 
     for (int i = 0; i < 4; i++) {
-
         int nextRow = row + dr[i];
         int nextCol = col + dc[i];
 
-        if (dfs(nextRow, nextCol, maze, visited, parent_row, 
-            parent_col, exit_row, exit_col)) {
+        // Check bounds for the neighbor
+        if (nextRow < 0 || nextRow >= N || nextCol < 0 || nextCol >= M) continue;
+        if (maze[nextRow][nextCol] == 1 || visited[nextRow][nextCol]) continue;
+
+        // Set parent BEFORE recursive call
+        parent_row[nextRow][nextCol] = row;
+        parent_col[nextRow][nextCol] = col;
+
+        if (dfs(nextRow, nextCol, maze, visited, parent_row, parent_col, exit_row, exit_col))
             return true;
-        }
     }
 
 
@@ -204,7 +209,7 @@ int main() {
 
     // ------------------------------------------------------
     // STUDENT WORK:
-    // If found, print the path
+    // If found, print the path 
     // ------------------------------------------------------
     if (found) {
         printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
